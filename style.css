@@ -1259,7 +1259,7 @@ section {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: var(--bg-primary);
+        background: var(--navbar-bg);
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -1530,15 +1530,34 @@ section {
         width: 100%;
         border-bottom: 1px solid transparent;
         transition: all 0.3s ease;
+        color: var(--nav-link-color);
+        font-weight: 600;
     }
 
     .nav-link:hover {
         border-bottom-color: var(--nav-link-hover);
         background: rgba(251, 191, 36, 0.05);
+        color: var(--nav-link-hover);
+        transform: translateX(10px);
+    }
+
+    .nav-link.active {
+        color: var(--nav-link-hover);
+        border-bottom-color: var(--nav-link-hover);
+        background: rgba(251, 191, 36, 0.1);
     }
 
     .hamburger {
         display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger:hover {
+        background: rgba(251, 191, 36, 0.1);
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -1553,13 +1572,118 @@ section {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    .nav-theme-toggle {
-        margin-left: 0.5rem;
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--nav-link-color);
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
     }
 
+    /* Mobile theme toggle positioning */
+    .nav-theme-toggle {
+        margin: 1rem auto;
+        order: -1; /* Move to top of mobile menu */
+    }
+    
     .theme-btn {
-        width: 36px;
-        height: 36px;
+        background: rgba(251, 191, 36, 0.1);
+        color: var(--nav-link-color);
+        border: 1px solid var(--border-color);
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        min-width: 60px;
+        height: 44px;
+        backdrop-filter: blur(5px);
+    }
+
+    .theme-btn:hover {
+        background: rgba(251, 191, 36, 0.2);
+        border-color: var(--nav-link-hover);
+        color: var(--nav-link-hover);
+        transform: scale(1.05);
+    }
+
+    /* Mobile menu overlay effect */
+    .nav-menu::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, 
+            rgba(30, 58, 138, 0.05) 0%, 
+            rgba(59, 130, 246, 0.05) 100%);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    /* Enhanced mobile menu transitions */
+    .nav-menu {
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Mobile menu backdrop */
+    .nav-menu-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu-backdrop.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Mobile menu item animations */
+    .nav-menu .nav-link {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.3s ease;
+        transition-delay: calc(var(--item-index) * 0.1s);
+    }
+
+    .nav-menu.active .nav-link {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Mobile menu close button */
+    .mobile-menu-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: var(--nav-link-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-close:hover {
+        background: rgba(251, 191, 36, 0.1);
+        color: var(--nav-link-hover);
+        transform: rotate(90deg);
     }
 }
 
