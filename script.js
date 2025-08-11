@@ -369,3 +369,107 @@ function trackEvent(eventName, parameters = {}) {
     // Log locally for debugging
     console.log('Event tracked:', eventName, parameters);
 } 
+
+// Enhanced Resume Download Tracking
+document.addEventListener('DOMContentLoaded', function() {
+    // Track resume downloads
+    trackResumeDownloads();
+    
+    // Track user engagement
+    trackUserEngagement();
+    
+    // Track project clicks
+    trackProjectClicks();
+});
+
+function trackResumeDownloads() {
+    const resumeButtons = document.querySelectorAll('a[href*="resume.pdf"], a[href*="resume.pdf"]');
+    
+    resumeButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default to handle manually
+            
+            // Track the download event
+            trackEvent('resume_download', {
+                format: 'pdf',
+                button_text: this.textContent.trim(),
+                button_location: this.closest('section')?.id || 'unknown'
+            });
+            
+            // Log for debugging
+            console.log('Resume download initiated:', this.href);
+            
+            // Try to download the resume
+            downloadResume(this.href);
+        });
+    });
+}
+
+function downloadResume(url) {
+    const button = document.querySelector('a[href*="resume.pdf"]');
+    const originalText = button.innerHTML;
+    
+    // Show downloading state
+    button.classList.add('downloading');
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+    
+    // Method 1: Try fetch with blob download
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create download link
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'Akshay_Kailasa_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(downloadUrl);
+            
+            // Show success state
+            button.classList.remove('downloading');
+            button.classList.add('download-success');
+            button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+            
+            console.log('✅ Resume downloaded successfully via blob method');
+            trackEvent('resume_download_success', { method: 'blob', size: blob.size });
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.classList.remove('download-success');
+                button.innerHTML = originalText;
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('❌ Blob download failed:', error);
+            trackEvent('resume_download_error', { method: 'blob', error: error.message });
+            
+            // Method 2: Fallback to direct link
+            console.log('🔄 Trying fallback download method...');
+            const fallbackLink = document.createElement('a');
+            fallbackLink.href = url;
+            fallbackLink.download = 'Akshay_Kailasa_Resume.pdf';
+            fallbackLink.target = '_blank';
+            fallbackLink.rel = 'noopener noreferrer';
+            document.body.appendChild(fallbackLink);
+            fallbackLink.click();
+            document.body.removeChild(fallbackLink);
+            
+            // Show fallback state
+            button.classList.remove('downloading');
+            button.innerHTML = '<i class="fas fa-external-link-alt"></i> Opening...';
+            
+            trackEvent('resume_download_fallback', { method: 'direct_link' });
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 3000);
+        });
+} 

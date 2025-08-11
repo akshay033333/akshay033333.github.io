@@ -1441,3 +1441,56 @@ section {
 .counter-text {
     font-weight: 500;
 } 
+
+/* Download Button States */
+.btn.btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.btn.btn-secondary.downloading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn.btn-secondary.downloading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: downloading-shine 1.5s infinite;
+}
+
+@keyframes downloading-shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Download Success Animation */
+.btn.btn-secondary.download-success {
+    background: var(--success-color, #10b981);
+    color: white;
+}
+
+.btn.btn-secondary.download-success i {
+    animation: download-bounce 0.6s ease;
+}
+
+@keyframes download-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+} 

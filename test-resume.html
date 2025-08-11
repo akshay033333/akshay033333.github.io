@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Download Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Resume Download Test Page</h1>
+    
+    <div class="test-section">
+        <h2>File Accessibility Test</h2>
+        <button onclick="testFileAccess()">Test Resume File Access</button>
+        <div id="file-test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Download Test</h2>
+        <button onclick="testDownload()">Test Resume Download</button>
+        <div id="download-test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Direct Links</h2>
+        <a href="assets/resume.pdf" target="_blank">Open Resume in New Tab</a><br>
+        <a href="assets/resume.pdf" download="Akshay_Kailasa_Resume.pdf">Download Resume (Direct)</a>
+    </div>
+
+    <script>
+        function testFileAccess() {
+            const resultDiv = document.getElementById('file-test-result');
+            resultDiv.innerHTML = '<p class="info">Testing file access...</p>';
+            
+            fetch('assets/resume.pdf', { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        const size = response.headers.get('content-length');
+                        resultDiv.innerHTML = `
+                            <p class="success">✅ File accessible!</p>
+                            <p>Status: ${response.status}</p>
+                            <p>Size: ${(size / 1024).toFixed(2)} KB</p>
+                            <p>Content-Type: ${response.headers.get('content-type')}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p class="error">❌ File not accessible: ${response.status}</p>`;
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+                });
+        }
+        
+        function testDownload() {
+            const resultDiv = document.getElementById('download-test-result');
+            resultDiv.innerHTML = '<p class="info">Testing download...</p>';
+            
+            fetch('assets/resume.pdf')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = downloadUrl;
+                    link.download = 'Akshay_Kailasa_Resume_Test.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(downloadUrl);
+                    
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ Download successful!</p>
+                        <p>File size: ${(blob.size / 1024).toFixed(2)} KB</p>
+                        <p>File type: ${blob.type}</p>
+                    `;
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<p class="error">❌ Download failed: ${error.message}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>
