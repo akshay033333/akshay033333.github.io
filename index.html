@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshay Kailasa - Data Engineer & Databricks Enthusiast</title>
+    <meta name="description" content="Professional portfolio of Akshay Kailasa, a Data Engineer specializing in Databricks, Apache Spark, and modern data architecture.">
+    <meta name="keywords" content="Data Engineer, Databricks, Apache Spark, ETL, Data Warehousing, AWS, Azure, Python, SQL">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Akshay Kailasa</a>
+                <a href="#home">AK</a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -23,13 +26,18 @@
                     <a href="#about" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
                     <a href="#skills" class="nav-link">Skills</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item nav-theme-toggle">
+                    <button class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </li>
             </ul>
             <div class="hamburger">
@@ -42,24 +50,80 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm Akshay Kailasa </h1>
-                <p class="hero-subtitle">Data Engineer & Databricks Enthusiast</p>
-                <p class="hero-description">
-                    I specialize in building robust data pipelines and scalable data solutions. 
-                    Passionate about Databricks, data engineering, and transforming raw data into valuable insights.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-rocket"></i>
+                        <span>Data Engineering Professional</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Hello,I am 
+                        Akshay Kailasa
+                    </h1>
+                    <p class="hero-subtitle">Data Engineer & Databricks Enthusiast</p>
+                    <p class="hero-description">
+                        Building scalable data architectures and ETL pipelines that drive business insights. 
+                        Specialized in cloud-native solutions, real-time processing, and modern data stack technologies.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-code"></i>
+                            View Projects
+                        </a>
+                        <a href="assets/resume.pdf" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Data Pipelines</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-container">
-                    <img src="assets/profile.png" alt="Akshay Kailasa - Data Engineer" class="profile-photo" id="profile-photo">
-                    <div class="profile-fallback" id="profile-fallback" style="display: none;">
-                        <i class="fas fa-user-circle"></i>
+                <div class="hero-visual">
+                    <div class="profile-container">
+                        <div class="profile-photo-wrapper">
+                            <img src="assets/profile.png" alt="Akshay Kailasa" class="profile-photo" onerror="this.style.display='none'; document.querySelector('.profile-fallback').style.display='flex';">
+                            <div class="profile-fallback" style="display: none;">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Akshay Kailasa</span>
+                            </div>
+                        </div>
+                        <div class="profile-graphics">
+                            <div class="geometric-shapes">
+                                <div class="shape-ak"></div>
+                                <div class="shape-dots"></div>
+                            </div>
+                            <div class="corner-accents">
+                                <div class="accent-line accent-top"></div>
+                                <div class="accent-line accent-bottom"></div>
+                            </div>
+                            <div class="floating-elements">
+                                <div class="float-icon float-db"></div>
+                                <div class="float-icon float-spark"></div>
+                                <div class="float-icon float-cloud"></div>
+                            </div>
+                        </div>
+                 
                     </div>
                 </div>
             </div>
@@ -69,95 +133,104 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-header">
+                <div class="section-badge">About Me</div>
+                <h2 class="section-title">Building the Future of Data Infrastructure</h2>
+                <p class="section-subtitle">Passionate about creating robust, scalable solutions that transform raw data into actionable insights</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a passionate data engineer with expertise in building scalable data pipelines, 
-                        data warehousing, and cloud-based data solutions. I specialize in Databricks, 
-                        Apache Spark, and modern data stack technologies.
+                        I'm a seasoned Data Engineer with over 5 years of experience designing and implementing 
+                        enterprise-grade data solutions. My expertise spans across modern data stack technologies, 
+                        cloud platforms, and real-time data processing systems.
                     </p>
                     <p>
-                        When I'm not architecting data solutions, you can find me exploring new data technologies, 
-                        contributing to open-source data projects, or sharing knowledge with the data engineering community.
+                        Currently focused on building scalable ETL pipelines, data warehouses, and real-time 
+                        analytics platforms using cutting-edge technologies like Databricks, Apache Spark, and 
+                        cloud-native services. I believe in writing clean, maintainable code and creating 
+                        documentation that empowers teams to build upon existing solutions.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>3+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat">
-                            <h3>20+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat">
-                            <h3>5+</h3>
-                            <p>Technologies</p>
-                        </div>
+                    <p>
+                        When I'm not architecting data solutions, you'll find me exploring new technologies, 
+                        contributing to open-source projects, and sharing knowledge with the data engineering community.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Technologies</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Movie Genre Classifier</h3>
-                        <p>Machine learning model to classify movies into genres using Python and natural language processing techniques.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/akshay033333/Movie_genre_classifier" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                        </div>
-                    </div>
+            
+            <div class="certifications">
+                <div class="section-header">
+                    <h3>Professional Certifications</h3>
+                    <p class="section-subtitle">Validated expertise in leading data technologies</p>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Airbnb Data Analysis with dbt</h3>
-                        <p>Comprehensive data analysis of Airbnb datasets using dbt (data build tool) for data transformation and analytics.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">dbt</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Data Analysis</span>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/akshay033333/Airbnb-Data-Analysis-with-dbt" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="cert-content">
+                            <span class="cert-title">Databricks Certified Data Engineer Professional</span>
+                            <a href="https://credentials.databricks.com/cf9e5160-06cb-4699-8503-884f82565aab#acc.4YUImQVl" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-virus"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Covid Data Analysis ETL - Azure</h3>
-                        <p>End-to-end ETL pipeline for COVID-19 data analysis using Azure Data Factory and cloud services.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Azure</span>
-                            <span class="tech-tag">ETL</span>
-                            <span class="tech-tag">Data Factory</span>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/akshay033333/CovidData-Analysis-ETL-Azure" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="cert-content">
+                            <span class="cert-title">AWS Certified Solutions Architect</span>
+                            <a href="https://www.credly.com/badges/48b6da48-3208-48b6-8164-8c7b0dfb1844/linked_in?t=ry08gv" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="cert-content">
+                            <span class="cert-title">Databricks Data Engineering Associate</span>
+                            <a href="https://credentials.databricks.com/6c4abb43-feed-4eb3-a830-823024ac35e2#acc.f7OFr6Ap" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="cert-content">
+                            <span class="cert-title">Snowflake Hands on Essentials Data Warehousing - Accreditation</span>
+                            <a href="https://achieve.snowflake.com/c97ac5ca-16ff-4ab6-9021-3bdf8bb090c2#acc.DrS1hFap" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="cert-content">
+                            <span class="cert-title">Astronomer Certification for Apache Airflow Fundamentals</span>
+                            <a href="https://www.credly.com/badges/12b268f9-6b37-4b73-9683-88d1c9e379c9" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -168,46 +241,153 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="section-header">
+                <div class="section-badge">Skills & Technologies</div>
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Mastering the tools and technologies that power modern data infrastructure</p>
+            </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Vue.js</span>
+                    <div class="skill-header">
+                        <i class="fas fa-database"></i>
+                        <h3>Data Engineering</h3>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend & Data</h3>
                     <div class="skill-items">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">Scala</span>
-                        <span class="skill-item">Airflow</span>
-                        <span class="skill-item">Kafka</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Data Engineering</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Databricks</span>
                         <span class="skill-item">Apache Spark</span>
                         <span class="skill-item">Delta Lake</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">Python</span>
+                        <span class="skill-item">ETL/ELT</span>
+                        <span class="skill-item">Data Warehousing</span>
+                        <span class="skill-item">Data Modeling</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Cloud & Tools</h3>
+                    <div class="skill-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Platforms</h3>
+                    </div>
                     <div class="skill-items">
                         <span class="skill-item">AWS</span>
                         <span class="skill-item">Azure</span>
+                        <span class="skill-item">Databricks</span>
+                        <span class="skill-item">Snowflake</span>
+                        <span class="skill-item">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Scala</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Bash</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Frameworks</h3>
+                    </div>
+                    <div class="skill-items">
+                        <span class="skill-item">dbt</span>
+                        <span class="skill-item">Apache Airflow</span>
+                        <span class="skill-item">Kafka</span>
                         <span class="skill-item">Git</span>
                         <span class="skill-item">Docker</span>
-                        <span class="skill-item">Terraform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Featured Projects</div>
+                <h2 class="section-title">Data Solutions That Deliver</h2>
+                <p class="section-subtitle">Real-world projects showcasing scalable data architecture and engineering excellence</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">Machine Learning</div>
+                        <h3>Movie Genre Classifier</h3>
+                        <p>
+                            Developed a machine learning model using natural language processing to classify movies 
+                            into genres based on plot descriptions. Implemented with Python, scikit-learn, and 
+                            deployed using Flask API.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/akshay033333/Movie_genre_classifier" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">Data Analytics</div>
+                        <h3>Airbnb Data Analysis with dbt</h3>
+                        <p>
+                            Built a comprehensive data analytics pipeline using dbt (data build tool) to transform 
+                            and analyze Airbnb booking data. Created reusable data models and automated testing 
+                            for data quality assurance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">dbt</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Data Modeling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/akshay033333/Airbnb-Data-Analysis-with-dbt" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">ETL Pipeline</div>
+                        <h3>Covid Data Analysis ETL - Azure</h3>
+                        <p>
+                            Designed and implemented an end-to-end ETL pipeline on Microsoft Azure for COVID-19 
+                            data analysis. Utilized Azure Data Factory, Azure SQL Database, and Power BI for 
+                            comprehensive data visualization and reporting.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Azure</span>
+                            <span class="tech-tag">Data Factory</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Power BI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/akshay033333/CovidData-Analysis-ETL-Azure" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,29 +397,37 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-header">
+                <div class="section-badge">Get In Touch</div>
+                <h2 class="section-title">Let's Build Something Amazing Together</h2>
+                <p class="section-subtitle">Ready to discuss your next data engineering project or career opportunity</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's work together!</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
+                    <h3>Ready to transform your data infrastructure?</h3>
+                    <p>
+                        I'm always interested in new challenges and opportunities to apply my expertise 
+                        in data engineering. Whether you have a project in mind or just want to connect, 
+                        I'd love to hear from you.
+                    </p>
                     <div class="contact-methods">
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <span>akshay.kailasa@gmail.com</span>
+                            <span>akshaykailasa@outlook.com</span>
                         </div>
                         <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <span>+1 (940)758-1526</span>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>United States</span>
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn Profile</span>
                         </div>
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/akshay033333" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/akshaykailasa/" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/akshay033333" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/akshaykailasa/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -248,9 +436,26 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Akshay Kailasa. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>AK</span>
+                </div>
+                <p class="footer-signature">Made with ♡ by Akshay!</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

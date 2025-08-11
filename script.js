@@ -27,14 +27,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
+// Navbar shadow change on scroll (respect theme CSS variables)
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = 'none';
     }
 });
@@ -162,6 +161,104 @@ document.addEventListener('DOMContentLoaded', () => {
             profilePhoto.style.display = 'none';
             profileFallback.style.display = 'flex';
         });
+    }
+});
+
+// Theme Toggle Functionality (sun/moon)
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure DOM is fully ready
+    setTimeout(() => {
+        console.log('DOM Content Loaded - looking for theme toggle button...');
+        
+        const themeToggle = document.querySelector('.theme-btn');
+        console.log('Theme toggle button found:', themeToggle);
+        
+        if (!themeToggle) {
+            console.error('Theme toggle button not found!');
+            // Let's check what buttons exist
+            const allButtons = document.querySelectorAll('button');
+            console.log('All buttons found:', allButtons);
+            const allThemeElements = document.querySelectorAll('[class*="theme"]');
+            console.log('All theme-related elements:', allThemeElements);
+            return;
+        }
+
+        const saved = localStorage.getItem('theme');
+        const initial = saved === 'dark' ? 'dark' : 'light';
+        console.log('Initial theme:', initial);
+        
+        document.documentElement.setAttribute('data-theme', initial);
+        updateThemeIcon(initial);
+
+        // Single click event listener for theme toggle
+        themeToggle.addEventListener('click', () => {
+            console.log('Theme toggle clicked!');
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            console.log('Switching from', current, 'to', next);
+            
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            console.log('Updating icon for theme:', theme, 'Icon element:', icon);
+            
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                    console.log('Icon updated to sun');
+                } else {
+                    icon.className = 'fas fa-moon';
+                    console.log('Icon updated to moon');
+                }
+            } else {
+                console.error('Icon element not found in theme toggle button');
+            }
+        }
+    }, 100);
+});
+
+// Back to Top Button
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (backToTopBtn) {
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Initialize theme from localStorage for consistency
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Update theme toggle icon if it exists
+    const themeToggle = document.querySelector('.theme-btn');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            if (savedTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
     }
 });
 
