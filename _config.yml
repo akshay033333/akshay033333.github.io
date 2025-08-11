@@ -1,0 +1,92 @@
+# GitHub Pages Configuration
+# This file configures your GitHub Pages site
+
+# Site settings
+title: Akshay Kailasa - Portfolio
+description: Software Engineer & Data Scientist Portfolio
+author: Akshay Kailasa
+email: akshay.kailasa@example.com
+
+# Repository settings
+repository: akshaykailasa/akshaykailasa.github.io
+branch: main
+
+# Build settings
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Site URL (update this with your actual GitHub Pages URL)
+url: "https://akshaykailasa.github.io"
+baseurl: ""
+
+# Social media links
+social:
+  github: akshaykailasa
+  linkedin: akshaykailasa
+  twitter: akshaykailasa
+  instagram: akshaykailasa
+
+# Site navigation
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /#about
+  - title: Projects
+    url: /#projects
+  - title: Skills
+    url: /#skills
+  - title: Contact
+    url: /#contact
+
+# SEO settings
+seo:
+  title: Akshay Kailasa - Software Engineer & Data Scientist
+  description: Professional portfolio showcasing software engineering projects, data science work, and technical skills.
+  keywords: software engineer, data scientist, portfolio, web development, machine learning
+  author: Akshay Kailasa
+  image: /assets/profile.jpg
+
+# Analytics (optional - add your Google Analytics ID)
+analytics:
+  google: ""
+
+# Comments (optional - add your Disqus shortname)
+comments:
+  disqus: ""
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+  - README.md
+  - package.json
+  - package-lock.json 

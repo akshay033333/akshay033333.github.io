@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Dashboard - Akshay Kailasa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .project-details {
+            padding: 80px 0;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .project-content h2 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-sidebar {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+            height: fit-content;
+        }
+        
+        .tech-stack h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-item {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            display: inline-block;
+            font-size: 0.875rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link:hover {
+            color: #1d4ed8;
+        }
+        
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">AK</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Projects
+            </a>
+            <h1>Data Analytics Dashboard</h1>
+            <p>A comprehensive dashboard for visualizing business metrics and KPIs using React and D3.js</p>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <div class="project-grid">
+                <div class="project-content">
+                    <h2>Project Overview</h2>
+                    <p>
+                        This Data Analytics Dashboard is a powerful web application designed to help businesses 
+                        visualize and analyze their key performance indicators (KPIs) in real-time. Built with 
+                        modern web technologies, it provides an intuitive interface for data exploration and 
+                        decision-making.
+                    </p>
+                    
+                    <h2>Key Features</h2>
+                    <ul style="color: #4b5563; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <li>Real-time data visualization with interactive charts</li>
+                        <li>Customizable dashboard layouts and widgets</li>
+                        <li>Data filtering and drill-down capabilities</li>
+                        <li>Responsive design for all devices</li>
+                        <li>Export functionality for reports</li>
+                        <li>User authentication and role-based access</li>
+                    </ul>
+                    
+                    <h2>Technical Implementation</h2>
+                    <p>
+                        The dashboard is built using React for the frontend framework, providing a component-based 
+                        architecture that ensures maintainability and scalability. D3.js is used for creating custom 
+                        data visualizations, while Chart.js handles standard chart types.
+                    </p>
+                    <p>
+                        The backend is powered by Node.js with Express.js, providing RESTful APIs for data retrieval. 
+                        Data is stored in MongoDB, and real-time updates are handled through WebSocket connections. 
+                        The application uses JWT for authentication and includes comprehensive error handling.
+                    </p>
+                    
+                    <h2>Challenges & Solutions</h2>
+                    <p>
+                        One of the main challenges was handling large datasets efficiently. I implemented data 
+                        pagination and lazy loading to ensure smooth performance. Another challenge was creating 
+                        responsive charts that work well on mobile devices - this was solved by implementing 
+                        responsive design principles and touch-friendly interactions.
+                    </p>
+                </div>
+                
+                <div class="project-sidebar">
+                    <div class="tech-stack">
+                        <h3>Technologies Used</h3>
+                        <div class="tech-item">React</div>
+                        <div class="tech-item">D3.js</div>
+                        <div class="tech-item">Node.js</div>
+                        <div class="tech-item">Express.js</div>
+                        <div class="tech-item">MongoDB</div>
+                        <div class="tech-item">WebSocket</div>
+                        <div class="tech-item">JWT</div>
+                        <div class="tech-item">Chart.js</div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3>Project Links</h3>
+                        <div style="margin-top: 1rem;">
+                            <a href="#" class="btn btn-primary" style="display: block; text-align: center; margin-bottom: 1rem;">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Akshay Kailasa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,9 @@
+This is a placeholder file for the assets directory.
+
+You can add your profile picture, project screenshots, and other images here.
+
+Recommended files to add:
+- profile.jpg (your profile picture)
+- project-screenshots/ (folder for project images)
+- resume.pdf (your resume)
+- favicon.ico (website icon) 
