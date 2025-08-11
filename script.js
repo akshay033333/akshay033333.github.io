@@ -164,101 +164,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Theme Toggle Functionality (sun/moon)
-document.addEventListener('DOMContentLoaded', () => {
-    // Small delay to ensure DOM is fully ready
-    setTimeout(() => {
-        console.log('DOM Content Loaded - looking for theme toggle button...');
+// Theme Toggle Functionality
+let currentTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
+    
+    // Update theme button icon
+    const themeBtn = document.querySelector('.theme-btn i');
+    if (themeBtn) {
+        themeBtn.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+}
+
+// Initialize theme button
+document.addEventListener('DOMContentLoaded', function() {
+    const themeBtn = document.querySelector('.theme-btn');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
         
-        const themeToggle = document.querySelector('.theme-btn');
-        console.log('Theme toggle button found:', themeToggle);
-        
-        if (!themeToggle) {
-            console.error('Theme toggle button not found!');
-            // Let's check what buttons exist
-            const allButtons = document.querySelectorAll('button');
-            console.log('All buttons found:', allButtons);
-            const allThemeElements = document.querySelectorAll('[class*="theme"]');
-            console.log('All theme-related elements:', allThemeElements);
-            return;
+        // Set initial icon
+        const themeIcon = themeBtn.querySelector('i');
+        if (themeIcon) {
+            themeIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
-
-        const saved = localStorage.getItem('theme');
-        const initial = saved === 'dark' ? 'dark' : 'light';
-        console.log('Initial theme:', initial);
-        
-        document.documentElement.setAttribute('data-theme', initial);
-        updateThemeIcon(initial);
-
-        // Single click event listener for theme toggle
-        themeToggle.addEventListener('click', () => {
-            console.log('Theme toggle clicked!');
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            console.log('Switching from', current, 'to', next);
-            
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon(next);
-        });
-
-        function updateThemeIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            console.log('Updating icon for theme:', theme, 'Icon element:', icon);
-            
-            if (icon) {
-                if (theme === 'dark') {
-                    icon.className = 'fas fa-sun';
-                    console.log('Icon updated to sun');
-                } else {
-                    icon.className = 'fas fa-moon';
-                    console.log('Icon updated to moon');
-                }
-            } else {
-                console.error('Icon element not found in theme toggle button');
-            }
-        }
-    }, 100);
+    }
 });
 
 // Back to Top Button
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const backToTopBtn = document.getElementById('back-to-top');
     
     if (backToTopBtn) {
-        // Show/hide back to top button based on scroll position
+        // Show/hide button based on scroll position
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('show');
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex';
             } else {
-                backToTopBtn.classList.remove('show');
+                backToTopBtn.style.display = 'none';
             }
         });
         
-        // Smooth scroll to top when button is clicked
+        // Smooth scroll to top when clicked
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-    }
-    
-    // Initialize theme from localStorage for consistency
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    // Update theme toggle icon if it exists
-    const themeToggle = document.querySelector('.theme-btn');
-    if (themeToggle) {
-        const icon = themeToggle.querySelector('i');
-        if (icon) {
-            if (savedTheme === 'dark') {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
-        }
     }
 });
 
