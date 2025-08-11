@@ -273,3 +273,99 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// Visitor Analytics and Tracking
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page views
+    trackPageView();
+    
+    // Track user engagement
+    trackUserEngagement();
+    
+    // Track project clicks
+    trackProjectClicks();
+});
+
+function trackPageView() {
+    // Increment page view counter
+    let pageViews = localStorage.getItem('pageViews') || 0;
+    pageViews = parseInt(pageViews) + 1;
+    localStorage.setItem('pageViews', pageViews);
+    
+    // Display visitor count (optional)
+    displayVisitorCount(pageViews);
+    
+    // Send to analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href
+        });
+    }
+}
+
+function displayVisitorCount(count) {
+    // Create visitor counter element
+    const visitorCounter = document.createElement('div');
+    visitorCounter.className = 'visitor-counter';
+    visitorCounter.innerHTML = `
+        <span class="counter-icon">👥</span>
+        <span class="counter-text">Visitors: ${count}</span>
+    `;
+    
+    // Add to footer
+    const footer = document.querySelector('footer');
+    if (footer) {
+        footer.appendChild(visitorCounter);
+    }
+}
+
+function trackUserEngagement() {
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            
+            // Track scroll milestones
+            if (maxScroll >= 25 && maxScroll < 50) {
+                trackEvent('scroll_25_percent');
+            } else if (maxScroll >= 50 && maxScroll < 75) {
+                trackEvent('scroll_50_percent');
+            } else if (maxScroll >= 75) {
+                trackEvent('scroll_75_percent');
+            }
+        }
+    });
+    
+    // Track time on page
+    let startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        trackEvent('time_on_page', { value: timeOnPage });
+    });
+}
+
+function trackProjectClicks() {
+    const projectLinks = document.querySelectorAll('.project-link');
+    projectLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const projectName = e.target.closest('.project-card').querySelector('h3').textContent;
+            trackEvent('project_click', {
+                project_name: projectName,
+                link_url: e.target.href
+            });
+        });
+    });
+}
+
+function trackEvent(eventName, parameters = {}) {
+    // Send to Google Analytics if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, parameters);
+    }
+    
+    // Log locally for debugging
+    console.log('Event tracked:', eventName, parameters);
+} 
