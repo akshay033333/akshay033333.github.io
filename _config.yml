@@ -3,9 +3,9 @@
 
 # Site settings
 title: Akshay Kailasa - Portfolio
-description: Software Engineer & Data Scientist Portfolio
+description: Data Engineer & Databricks Enthusiast Portfolio
 author: Akshay Kailasa
-email: akshay.kailasa@example.com
+email: akshaykailasa@outlook.com
 
 # Repository settings
 repository: akshaykailasa/akshaykailasa.github.io
@@ -17,12 +17,12 @@ plugins:
   - jekyll-sitemap
 
 # Site URL (update this with your actual GitHub Pages URL)
-url: "https://akshaykailasa.github.io"
-baseurl: ""
+url: "https://akshay033333.github.io"
+baseurl: "/akshaykailasa.github.io"
 
 # Social media links
 social:
-  github: akshaykailasa
+  github: akshay033333
   linkedin: akshaykailasa
   twitter: akshaykailasa
   instagram: akshaykailasa
