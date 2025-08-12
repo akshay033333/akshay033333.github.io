@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function trackResumeDownloads() {
-    const resumeButtons = document.querySelectorAll('a[href*="resume.pdf"], a[href*="resume.pdf"]');
+    const resumeButtons = document.querySelectorAll('a[href*="resume.docx"], a[href*="resume.docx"]');
     
     resumeButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -347,7 +347,7 @@ function trackResumeDownloads() {
             
             // Track the download event
             trackEvent('resume_download', {
-                format: 'pdf',
+                format: 'docx',
                 button_text: this.textContent.trim(),
                 button_location: this.closest('section')?.id || 'unknown'
             });
@@ -362,7 +362,7 @@ function trackResumeDownloads() {
 }
 
 function downloadResume(url) {
-    const button = document.querySelector('a[href*="resume.pdf"]');
+    const button = document.querySelector('a[href*="resume.docx"]');
     const originalText = button.innerHTML;
     
     // Show downloading state
@@ -382,7 +382,7 @@ function downloadResume(url) {
             const downloadUrl = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = downloadUrl;
-            link.download = 'Akshay_Kailasa_Resume.pdf';
+            link.download = 'Akshay_Kailasa_Resume.docx';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -410,7 +410,7 @@ function downloadResume(url) {
             console.log('🔄 Trying fallback download method...');
             const fallbackLink = document.createElement('a');
             fallbackLink.href = url;
-            fallbackLink.download = 'Akshay_Kailasa_Resume.pdf';
+            fallbackLink.download = 'Akshay_Kailasa_Resume.docx';
             fallbackLink.target = '_blank';
             fallbackLink.rel = 'noopener noreferrer';
             document.body.appendChild(fallbackLink);
