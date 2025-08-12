@@ -1811,216 +1811,189 @@ section {
 .cert-badge {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    padding: 1rem 1.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-.cert-badge:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.cert-badge.databricks {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.08) 0%, rgba(192, 57, 43, 0.08) 100%);
-    border-color: rgba(231, 76, 60, 0.25);
-}
-
-.cert-badge.aws {
-    background: linear-gradient(135deg, rgba(142, 68, 173, 0.08) 0%, rgba(108, 92, 231, 0.08) 100%);
-    border-color: rgba(142, 68, 173, 0.25);
-}
-
-.cert-logo {
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-}
-
-.cert-text {
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.025em;
-}
-
-/* Enhanced Certification Items */
-.cert-item .cert-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.cert-item:hover .cert-icon {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-md);
-}
-
-/* Ensure all certification items have consistent sizing */
-.cert-item {
-    display: flex;
-    gap: 1rem;
-    background: var(--bg-secondary);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    min-height: 120px;
-    align-items: flex-start;
-}
-
-.cert-item:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary-color);
-}
-
-.cert-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-    min-width: 0;
-}
-
-.cert-title {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin: 0;
-}
-
-.cert-verify-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    align-self: flex-start;
-}
-
-.cert-verify-link:hover {
-    opacity: 1;
-    color: var(--primary-color);
-    transform: translateX(2px);
-}
-
-/* Databricks and AWS specific styling */
-.cert-item:nth-child(1) .cert-icon,
-.cert-item:nth-child(3) .cert-icon {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.cert-item:nth-child(1) .cert-icon .databricks-logo,
-.cert-item:nth-child(3) .cert-icon .databricks-logo {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-}
-
-.cert-item:nth-child(2) .cert-icon {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.cert-item:nth-child(2) .cert-icon .aws-logo {
-    background: linear-gradient(135deg, #8e44ad 0%, #6c5ce7 100%);
-}
-
-/* Snowflake specific styling - Blue background */
-.cert-item:nth-child(4) .cert-icon {
-    background: linear-gradient(135deg, #29b5e8 0%, #1e88e5 100%);
-    color: white;
-    border: 2px solid rgba(41, 181, 232, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.cert-item:nth-child(4) .cert-icon::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(0deg);
-    transition: transform 0.6s ease;
-}
-
-.cert-item:nth-child(4) .cert-icon:hover::before {
-    transform: rotate(180deg);
-}
-
-.cert-item:nth-child(4) .cert-icon:hover {
-    border-color: rgba(41, 181, 232, 0.6);
-    box-shadow: 0 0 20px rgba(41, 181, 232, 0.4);
-    transform: scale(1.05);
-}
-
-/* Airflow logo styling to match other logos */
-.cert-item:nth-child(5) .cert-icon {
-    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-    color: white;
-    border: 2px solid rgba(243, 156, 18, 0.3);
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.cert-item:nth-child(5) .cert-icon::before {
+.cert-badge::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
 }
 
-.cert-item:nth-child(5) .cert-icon:hover::before {
+.cert-badge:hover::before {
     left: 100%;
 }
 
-.cert-item:nth-child(5) .cert-icon:hover {
-    border-color: rgba(243, 156, 18, 0.6);
-    box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+.cert-badge:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.cert-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.cert-badge:hover .cert-text {
+    color: var(--primary-color);
     transform: scale(1.05);
 }
 
-/* Mobile Responsiveness for Certification Badges */
+.cert-badge.databricks {
+    background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+    border-color: #dc2626;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);
+}
+
+.cert-badge.databricks:hover {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-color: #b91c1c;
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.25);
+}
+
+.cert-badge.aws {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-color: #7c3aed;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+}
+
+.cert-badge.aws:hover {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-color: #6d28d9;
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.25);
+}
+
+/* Enhanced logo animations */
+.cert-logo {
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 2;
+}
+
+.cert-badge:hover .cert-logo {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Pulse animation for certification badges */
+@keyframes certPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.cert-badge {
+    animation: certPulse 3s ease-in-out infinite;
+}
+
+.cert-badge:hover {
+    animation: none;
+}
+
+/* Floating animation for certification badges */
+@keyframes certFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.certification-badges {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: certFloat 4s ease-in-out infinite;
+}
+
+.cert-badge i {
+    font-size: 0.875rem;
+    color: var(--accent-color);
+}
+
+.cert-badge.databricks i {
+    color: #dc2626;
+}
+
+.cert-badge.aws i {
+    color: #7c3aed;
+}
+
+.cert-badge.azure i {
+    color: #2563eb;
+}
+
+.cert-badge.github i {
+    color: #374151;
+}
+
+.cert-badge.snowflake i {
+    color: #29b5e8;
+}
+
+.cert-badge.airflow i {
+    color: #f39c12;
+}
+
+.cert-badge.databricks::before,
+.cert-badge.aws::before,
+.cert-badge.azure::before,
+.cert-badge.github::before,
+.cert-badge.snowflake::before,
+.cert-badge.airflow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.cert-badge:hover::before {
+    left: 100%;
+}
+
+.cert-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+/* Responsive design for expertise tags */
 @media (max-width: 768px) {
     .certification-badges {
         flex-direction: column;
@@ -2993,13 +2966,15 @@ section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: white;
+    color: #1f2937; /* Changed from white to dark color for better visibility */
     font-size: 0.85rem;
     font-weight: 600;
     transition: all 0.3s ease;
     cursor: default;
     position: relative;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.9); /* Changed to more solid white background */
+    border: 1px solid rgba(31, 41, 55, 0.2);
 }
 
 .profile-cert-badge::before {
@@ -3018,10 +2993,10 @@ section {
 }
 
 .profile-cert-badge:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 1); /* Solid white on hover */
+    border-color: rgba(31, 41, 55, 0.4);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(31, 41, 55, 0.2);
 }
 
 .profile-cert-badge i {
