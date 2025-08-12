@@ -212,11 +212,8 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    padding: 8rem 0 6rem;
     position: relative;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     overflow: hidden;
 }
 
@@ -369,12 +366,12 @@ body {
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    border-radius: 12px;
-    text-decoration: none;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    text-decoration: none;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
@@ -390,7 +387,7 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    transition: left 0.6s ease;
 }
 
 .btn:hover::before {
@@ -400,34 +397,37 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 2px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-tertiary);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .btn-outline:hover {
-    background: var(--primary-color);
-    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
 }
 
@@ -717,7 +717,7 @@ body {
 
 /* Section Styles */
 section {
-    padding: 5rem 0;
+    padding: 6rem 0;
 }
 
 .section-header {
@@ -756,7 +756,7 @@ section {
 
 /* About Section */
 .about {
-    background: var(--about-bg);
+    background: var(--bg-secondary);
 }
 
 .about-content {
@@ -768,10 +768,15 @@ section {
 }
 
 .about-text p {
-    font-size: 1.125rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
+    line-height: 1.8;
     margin-bottom: 1.5rem;
-    line-height: 1.7;
+    font-weight: 400;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
 }
 
 .about-stats {
@@ -827,6 +832,39 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsive adjustments for certification grid */
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .cert-item {
+        padding: 1.25rem;
+        min-height: 110px;
+    }
+    
+    .cert-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cert-grid {
+        gap: 0.75rem;
+    }
+    
+    .cert-item {
+        padding: 1rem;
+        min-height: 100px;
+    }
+    
+    .cert-title {
+        font-size: 0.85rem;
+    }
 }
 
 .cert-item {
@@ -898,7 +936,7 @@ section {
 
 /* Skills Section */
 .skills {
-    background: var(--skills-bg);
+    background: var(--bg-primary);
 }
 
 .skills-grid {
@@ -971,7 +1009,7 @@ section {
 
 /* Projects Section */
 .projects {
-    background: var(--projects-bg);
+    background: var(--bg-secondary);
 }
 
 .projects-grid {
@@ -1092,7 +1130,7 @@ section {
 
 /* Contact Section */
 .contact {
-    background: var(--contact-bg);
+    background: var(--bg-primary);
 }
 
 .contact-content {
@@ -1299,10 +1337,6 @@ section {
         grid-template-columns: 1fr;
     }
     
-    .cert-grid {
-        grid-template-columns: 1fr;
-    }
-
     .projects-grid {
         grid-template-columns: 1fr;
     }
@@ -1741,3 +1775,945 @@ section {
 .nav-logo a:hover::before {
     opacity: 0.1;
 } 
+
+/* Certification Badges in Hero Section */
+.certification-badges {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cert-badge:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cert-badge.databricks {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.08) 0%, rgba(192, 57, 43, 0.08) 100%);
+    border-color: rgba(231, 76, 60, 0.25);
+}
+
+.cert-badge.aws {
+    background: linear-gradient(135deg, rgba(142, 68, 173, 0.08) 0%, rgba(108, 92, 231, 0.08) 100%);
+    border-color: rgba(142, 68, 173, 0.25);
+}
+
+.cert-logo {
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.cert-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+/* Enhanced Certification Items */
+.cert-item .cert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cert-item:hover .cert-icon {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+/* Ensure all certification items have consistent sizing */
+.cert-item {
+    display: flex;
+    gap: 1rem;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    min-height: 120px;
+    align-items: flex-start;
+}
+
+.cert-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.cert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.cert-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cert-verify-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.cert-verify-link:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    transform: translateX(2px);
+}
+
+/* Databricks and AWS specific styling */
+.cert-item:nth-child(1) .cert-icon,
+.cert-item:nth-child(3) .cert-icon {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.cert-item:nth-child(1) .cert-icon .databricks-logo,
+.cert-item:nth-child(3) .cert-icon .databricks-logo {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.cert-item:nth-child(2) .cert-icon {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.cert-item:nth-child(2) .cert-icon .aws-logo {
+    background: linear-gradient(135deg, #8e44ad 0%, #6c5ce7 100%);
+}
+
+/* Snowflake specific styling - Blue background */
+.cert-item:nth-child(4) .cert-icon {
+    background: linear-gradient(135deg, #29b5e8 0%, #1e88e5 100%);
+    color: white;
+    border: 2px solid rgba(41, 181, 232, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-item:nth-child(4) .cert-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(0deg);
+    transition: transform 0.6s ease;
+}
+
+.cert-item:nth-child(4) .cert-icon:hover::before {
+    transform: rotate(180deg);
+}
+
+.cert-item:nth-child(4) .cert-icon:hover {
+    border-color: rgba(41, 181, 232, 0.6);
+    box-shadow: 0 0 20px rgba(41, 181, 232, 0.4);
+    transform: scale(1.05);
+}
+
+/* Airflow logo styling to match other logos */
+.cert-item:nth-child(5) .cert-icon {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    color: white;
+    border: 2px solid rgba(243, 156, 18, 0.3);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-item:nth-child(5) .cert-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cert-item:nth-child(5) .cert-icon:hover::before {
+    left: 100%;
+}
+
+.cert-item:nth-child(5) .cert-icon:hover {
+    border-color: rgba(243, 156, 18, 0.6);
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness for Certification Badges */
+@media (max-width: 768px) {
+    .certification-badges {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 1rem 0;
+    }
+    
+    .cert-badge {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+    }
+    
+    .cert-logo {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .cert-text {
+        font-size: 0.8rem;
+    }
+    
+    .cert-grid {
+        gap: 1rem;
+    }
+    
+    .cert-item {
+        padding: 1rem;
+    }
+    
+    .cert-logo-small {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .certification-badges {
+        margin: 0.75rem 0;
+    }
+    
+    .cert-badge {
+        max-width: 250px;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .cert-text {
+        font-size: 0.75rem;
+    }
+} 
+
+/* Certification Badge Animations */
+@keyframes certBadgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes certBadgeGlow {
+    0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+}
+
+.cert-badge {
+    animation: certBadgeFloat 3s ease-in-out infinite;
+    animation-delay: calc(var(--badge-index, 0) * 0.5s);
+}
+
+.cert-badge:hover {
+    animation: none;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cert-badge.databricks:hover {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.2) 0%, rgba(192, 57, 43, 0.2) 100%);
+    border-color: rgba(231, 76, 60, 0.5);
+}
+
+.cert-badge.aws:hover {
+    background: linear-gradient(135deg, rgba(142, 68, 173, 0.2) 0%, rgba(108, 92, 231, 0.2) 100%);
+    border-color: rgba(142, 68, 173, 0.5);
+}
+
+/* Certification Item Animations */
+.cert-item {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.cert-item:nth-child(1) { animation-delay: 0.1s; }
+.cert-item:nth-child(2) { animation-delay: 0.2s; }
+.cert-item:nth-child(3) { animation-delay: 0.3s; }
+.cert-item:nth-child(4) { animation-delay: 0.4s; }
+.cert-item:nth-child(5) { animation-delay: 0.5s; } 
+
+/* Enhanced Logo Designs with Professional Colors */
+.databricks-logo {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.4);
+}
+
+.databricks-logo::before {
+    content: 'DB';
+    color: #1a1a1a;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.databricks-logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: databricksShine 4s ease-in-out infinite;
+}
+
+@keyframes databricksShine {
+    0%, 100% { transform: translateX(-100%) skewX(-15deg); }
+    50% { transform: translateX(100%) skewX(-15deg); }
+}
+
+.aws-logo {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #8e44ad 0%, #6c5ce7 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(142, 68, 173, 0.4);
+}
+
+.aws-logo::before {
+    content: 'AWS';
+    color: #1a1a1a;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.aws-logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: awsShine 4s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes awsShine {
+    0%, 100% { transform: translateX(-100%) skewX(-15deg); }
+    50% { transform: translateX(100%) skewX(-15deg); }
+}
+
+/* Small logo variants for certification items */
+.cert-logo-small.databricks-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.cert-logo-small.databricks-logo::before {
+    font-size: 12px;
+    color: #1a1a1a;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.cert-logo-small.aws-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.cert-logo-small.aws-logo::before {
+    font-size: 10px;
+    color: #1a1a1a;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Enhanced logo hover effects */
+.cert-badge:hover .databricks-logo {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.cert-badge:hover .aws-logo {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
+}
+
+.cert-item:hover .databricks-logo {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.cert-item:hover .aws-logo {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+} 
+
+/* About Section Enhanced Hover Effects */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.about-stats .stat {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-stats .stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.about-stats .stat:hover::before {
+    left: 100%;
+}
+
+.about-stats .stat:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--bg-secondary), rgba(59, 130, 246, 0.05));
+}
+
+.about-stats .stat:hover .stat-number {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.about-stats .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.about-stats .stat-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.about-stats .stat:hover .stat-label {
+    color: var(--text-primary);
+    transform: translateY(-2px);
+} 
+
+/* Skills Section Enhanced Hover Effects */
+.skill-category {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.skill-category:hover::before {
+    transform: scaleX(1);
+}
+
+.skill-category:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--bg-secondary), rgba(59, 130, 246, 0.03));
+}
+
+.skill-category:hover .skill-header i {
+    transform: rotate(360deg) scale(1.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+.skill-category:hover .skill-header h3 {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.skill-item {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+} 
+
+/* Projects Section Enhanced Hover Effects */
+.project-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-card:hover .project-badge {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.project-card:hover .project-content h3 {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.project-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.project-card:hover .project-link::after {
+    width: 100%;
+}
+
+.project-card:hover .project-link {
+    transform: translateX(5px);
+    color: var(--accent-color);
+} 
+
+/* Hero Section Enhanced Hover Effects */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.hero-badge:hover::before {
+    left: 100%;
+}
+
+.hero-badge:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-badge:hover i {
+    transform: rotate(360deg) scale(1.1);
+    color: var(--accent-color);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.stat-item {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.stat-item:hover .stat-number {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.stat-item:hover .stat-label {
+    color: var(--primary-color);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+} 
+
+/* Professional Typography Enhancements */
+.hero-title .highlight {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 900;
+    position: relative;
+}
+
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+}
+
+.hero-title:hover .highlight::after {
+    transform: scaleX(1);
+}
+
+/* Enhanced Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Professional Card Enhancements */
+.project-card, .skill-category, .cert-item {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-card:hover, .skill-category:hover, .cert-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Enhanced Project Images */
+.project-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-image i {
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-image i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Professional Tech Tags */
+.tech-tag {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Social Links */
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+}
+
+.social-link:hover::before {
+    transform: scale(1);
+}
+
+.social-link:hover {
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.social-link i {
+    position: relative;
+    z-index: 1;
+}
+
+/* Professional Footer */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.footer-signature {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}

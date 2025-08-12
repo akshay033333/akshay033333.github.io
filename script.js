@@ -477,3 +477,55 @@ function handleActiveNavigation() {
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink(); // Initial call
 } 
+
+// Certification Badge Interactions
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click functionality to certification badges
+    const certBadges = document.querySelectorAll('.cert-badge');
+    
+    certBadges.forEach(badge => {
+        badge.addEventListener('click', function() {
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-2px)';
+            }, 150);
+            
+            // Track certification badge clicks
+            const certType = this.classList.contains('databricks') ? 'Databricks' : 'AWS';
+            trackEvent('certification_badge_click', { 
+                certification_type: certType,
+                location: 'hero_section'
+            });
+        });
+        
+        // Add hover sound effect (optional)
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Enhanced certification item interactions
+    const certItems = document.querySelectorAll('.cert-item');
+    
+    certItems.forEach((item, index) => {
+        // Add staggered animation delay
+        item.style.animationDelay = `${index * 0.1}s`;
+        
+        // Add click tracking for verification links
+        const verifyLink = item.querySelector('.cert-verify-link');
+        if (verifyLink) {
+            verifyLink.addEventListener('click', function() {
+                const certTitle = item.querySelector('.cert-title').textContent;
+                trackEvent('certification_verification_click', {
+                    certification: certTitle,
+                    location: 'about_section'
+                });
+            });
+        }
+    });
+}); 
